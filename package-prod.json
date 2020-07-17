@@ -22,12 +22,12 @@
     "lint:ts": "tslint -p . -t stylish",
     "lint:tsc": "tsc -p tsconfig.json --noEmit",
     "prettier-all": "prettier --write './src/**/*.ts' '!src/{assets,datas}/**'",
-    "start": "node index.js",
-    "start:prod": "node dist/main.js",
-    "start:watch": "nodemon",
-    "test": "jest --config=jest.json",
+    "start": "NODE_ENV=dev node index.js",
+    "start:prod": "NODE_ENV=prod node dist/main.js",
+    "start:watch": "NODE_ENV=dev nodemon",
+    "test": "NODE_ENV=dev jest --config=jest.json",
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
-    "test:watch": "jest --watch --config=jest.json"
+    "test:watch": "NODE_ENV=dev jest --watch --config=jest.json"
   },
   "dependencies": {
     "@nestjs/common": "^6.10.14",
@@ -68,13 +68,13 @@
   },
   "commitlint": {
     "extends": [
-      "@wx-fc"
+      "@m-fe"
     ]
   },
-  "prettier": "@wx-fc/prettier-config/semi",
+  "prettier": "@m-fe/prettier-config/semi",
   "remarkConfig": {
     "plugins": [
-      "@wx-fc/remark-config"
+      "@m-fe/remark-config"
     ]
   }
 }

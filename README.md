@@ -45,20 +45,26 @@ NestJS codebase containing real world examples (CRUD, auth, advanced patterns, K
 
 Clone the repository
 
-    git clone https://github.com/FE-Kits/nest-realworld-app
+```sh
+git clone https://github.com/FE-Kits/nest-realworld-app
+```
 
 Switch to the repo folder
 
-    cd nest-realworld-app
+```sh
+cd nest-realworld-app
+```
 
 Install dependencies
 
-    npm install
-
+```sh
+npm install
+```
 Copy config file and set JsonWebToken secret key
 
+```sh
     cp src/config.ts.example src/config.ts
-
+```
 ---
 
 ## Database
@@ -69,20 +75,24 @@ Create a new mysql database with the name `nestjsrealworld` (or the name you spe
 
 Copy Typeorm config example file for database settings
 
-    cp ormconfig.json.example ``
+```sh
+cp ormconfig.json.example ``
+```
 
 Set mysql database settings in ormconfig.json
 
-    {
-      "type": "mysql",
-      "host": "localhost",
-      "port": 3306,
-      "username": "your-mysql-username",
-      "password": "your-mysql-password",
-      "database": "nestjsrealworld",
-      "entities": ["src/**/**.entity{.ts,.js}"],
-      "synchronize": true
-    }
+```json
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "your-mysql-username",
+  "password": "your-mysql-password",
+  "database": "nestjsrealworld",
+  "entities": ["src/**/**.entity{.ts,.js}"],
+  "synchronize": true
+}
+```
 
 Start local mysql server and create new database 'nestjsrealworld', On application start, tables for all entities will be created.
 
@@ -94,6 +104,7 @@ Start local mysql server and create new database 'nestjsrealworld', On applicati
 - `npm run start:watch` - Start application in watch mode
 - `npm run test` - run Jest test runner
 - `npm run build && npm run start:prod` - Build application
+- Test api with `http://localhost:3000/api/articles` in your favourite browser
 
 ---
 
@@ -104,13 +115,6 @@ This application adheres to the api specifications set by the [Thinkster](https:
 > [Full API Spec](https://github.com/gothinkster/realworld/tree/master/api)
 
 More information regarding the project can be found here https://github.com/gothinkster/realworld
-
----
-
-## Start application
-
-- `npm start`
-- Test api with `http://localhost:3000/api/articles` in your favourite browser
 
 ---
 
