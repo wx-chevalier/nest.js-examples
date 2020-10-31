@@ -4,11 +4,11 @@
   "description": "[![Build Status](https://travis-ci.org/anishkny/node-express-realworld-example-app.svg?branch=master)](https://travis-ci.org/anishkny/node-express-realworld-example-app)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BE-Kits/node-examples.git"
+    "url": "git+https://github.com/wx-chevalier/node-examples.git"
   },
-  "homepage": "https://github.com/BE-Kits/node-examples#readme",
+  "homepage": "https://github.com/wx-chevalier/node-examples#readme",
   "bugs": {
-    "url": "https://github.com/BE-Kits/node-examples/issues"
+    "url": "https://github.com/wx-chevalier/node-examples/issues"
   },
   "author": "wx-chevalier@github",
   "license": "ISC",

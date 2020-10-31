@@ -4,11 +4,11 @@
   "description": "[![Build Status](https://travis-ci.org/anishkny/node-express-realworld-example-app.svg?branch=master)](https://travis-ci.org/anishkny/node-express-realworld-example-app)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FE-Kits/nest-realworld-app.git"
+    "url": "git+https://github.com/wx-chevalier/nest-realworld-app.git"
   },
-  "homepage": "https://github.com/FE-Kits/nest-realworld-app#readme",
+  "homepage": "https://github.com/wx-chevalier/nest-realworld-app#readme",
   "bugs": {
-    "url": "https://github.com/FE-Kits/nest-realworld-app/issues"
+    "url": "https://github.com/wx-chevalier/nest-realworld-app/issues"
   },
   "author": "wx-chevalier@github",
   "license": "ISC",

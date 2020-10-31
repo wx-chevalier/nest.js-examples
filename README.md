@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/FE-Kits/nest-realworld-app">
+  <a href="https://github.com/wx-chevalier/nest-realworld-app">
     <img src="https://docs.nestjs.com/assets/logo-small.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -16,14 +16,14 @@
   <p align="center">
     MVC & ORM & K8s & Test
     <br />
-    <a href="https://github.com/FE-Kits/nest-realworld-app"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/wx-chevalier/nest-realworld-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/FE-Kits/nest-realworld-app">View Demo</a>
+    <a href="https://github.com/wx-chevalier/nest-realworld-app">View Demo</a>
     ·
-    <a href="https://github.com/FE-Kits/nest-realworld-app/issues">Report Bug</a>
+    <a href="https://github.com/wx-chevalier/nest-realworld-app/issues">Report Bug</a>
     ·
-    <a href="https://github.com/FE-Kits/nest-realworld-app/issues">Request Feature</a>
+    <a href="https://github.com/wx-chevalier/nest-realworld-app/issues">Request Feature</a>
   </p>
 </p>
 
@@ -46,7 +46,7 @@ NestJS codebase containing real world examples (CRUD, auth, advanced patterns, K
 Clone the repository
 
 ```sh
-git clone https://github.com/FE-Kits/nest-realworld-app
+git clone https://github.com/wx-chevalier/nest-realworld-app
 ```
 
 Switch to the repo folder
@@ -60,11 +60,13 @@ Install dependencies
 ```sh
 npm install
 ```
+
 Copy config file and set JsonWebToken secret key
 
 ```sh
-    cp src/config.ts.example src/config.ts
+cp src/config.ts.example src/config.ts
 ```
+
 ---
 
 ## Database
@@ -76,7 +78,7 @@ Create a new mysql database with the name `nestjsrealworld` (or the name you spe
 Copy Typeorm config example file for database settings
 
 ```sh
-cp ormconfig.json.example ``
+cp ormconfig.json.example $()
 ```
 
 Set mysql database settings in ormconfig.json
@@ -142,7 +144,7 @@ $ docker run -it -p 7001:7001 nest-realworld-app
 
 ## K8s Helm
 
-See [helm-biz-app/backend-app](https://github.com/BE-Kits/k8s-examples).
+See [helm-biz-app/backend-app](https://github.com/wx-chevalier/k8s-examples).
 
 # About
 
@@ -150,7 +152,7 @@ See [helm-biz-app/backend-app](https://github.com/BE-Kits/k8s-examples).
 
 ## Roadmap
 
-See the [open issues](https://github.com/FE-Kits/nest-realworld-app/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/wx-chevalier/nest-realworld-app/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -189,16 +191,16 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/FE-Kits/nest-realworld-app.svg?style=flat-square
-[contributors-url]: https://github.com/FE-Kits/nest-realworld-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/FE-Kits/nest-realworld-app.svg?style=flat-square
-[forks-url]: https://github.com/FE-Kits/nest-realworld-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/FE-Kits/nest-realworld-app.svg?style=flat-square
-[stars-url]: https://github.com/FE-Kits/nest-realworld-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/FE-Kits/nest-realworld-app.svg?style=flat-square
-[issues-url]: https://github.com/FE-Kits/nest-realworld-app/issues
-[license-shield]: https://img.shields.io/github/license/FE-Kits/nest-realworld-app.svg?style=flat-square
-[license-url]: https://github.com/FE-Kits/nest-realworld-app/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/wx-chevalier/nest-realworld-app.svg?style=flat-square
+[contributors-url]: https://github.com/wx-chevalier/nest-realworld-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wx-chevalier/nest-realworld-app.svg?style=flat-square
+[forks-url]: https://github.com/wx-chevalier/nest-realworld-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/wx-chevalier/nest-realworld-app.svg?style=flat-square
+[stars-url]: https://github.com/wx-chevalier/nest-realworld-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wx-chevalier/nest-realworld-app.svg?style=flat-square
+[issues-url]: https://github.com/wx-chevalier/nest-realworld-app/issues
+[license-shield]: https://img.shields.io/github/license/wx-chevalier/nest-realworld-app.svg?style=flat-square
+[license-url]: https://github.com/wx-chevalier/nest-realworld-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
