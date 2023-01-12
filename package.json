@@ -41,7 +41,7 @@
     "@nestjs/websockets": "^7.3.2",
     "cache-manager": "^3.3.0",
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.12.2",
+    "class-validator": "^0.14.0",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "csurf": "^1.11.0",
