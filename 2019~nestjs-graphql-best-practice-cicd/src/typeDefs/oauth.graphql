@@ -1,0 +1,5 @@
+type Mutation {
+	oauthGooglePlus(accessToken: String!): LoginResponse
+	oauthFacebook(accessToken: String!): LoginResponse
+	oauthGoogle(accessToken: String!): LoginResponse
+}

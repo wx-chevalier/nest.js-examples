@@ -1,0 +1,173 @@
+enum Gender {
+	UNKNOWN
+	MALE
+	FEMALE
+}
+
+enum RecordType {
+	User
+	File
+}
+
+type Users {
+	users: [User!]
+}
+
+union Result = User | File
+union UserResult = User | Users
+
+input UserInput {
+	firstName: String
+	lastName: String
+	email: String
+	password: String
+	gender: Gender
+}
+
+input FileInput {
+	filename: String
+}
+
+input RecordInput {
+	User: UserInput
+	File: FileInput
+}
+
+input CreateUserInput {
+	firstName: String!
+	lastName: String!
+	email: String!
+	password: String!
+	gender: Gender!
+}
+
+input UpdateUserInput {
+	firstName: String!
+	lastName: String!
+	password: String!
+	gender: Gender!
+}
+
+input LoginUserInput {
+	email: String! @length(max: 7)
+	password: String!
+}
+
+input SearchInput {
+	select: [String!]
+	where: RecordInput
+	start: Float
+	end: Float
+	order: JSONObject
+	skip: Int
+	take: Int
+}
+
+type LoginResponse {
+	accessToken: String!
+	refreshToken: String!
+}
+
+type RefreshTokenResponse {
+	accessToken: String!
+}
+
+type Local {
+	email: String
+	password: String
+}
+
+type Google {
+	_id: String
+	token: String
+	name: String
+	email: String
+}
+
+type Facebook {
+	_id: String
+	token: String
+	name: String
+	email: String
+}
+
+enum UserType {
+	BASIC # $0
+	PREMIUM # $9.99
+}
+
+type User {
+	_id: ID!
+	local: Local
+	google: Google
+	facebook: Facebook
+	firstName: String!
+	lastName: String!
+	avatar: String
+	gender: Gender!
+	resetPasswordToken: String
+	resetPasswordExpires: Float
+	fullName: String @upper @concat(value: "Chnirt")
+	isVerified: Boolean!
+	isActivated: Boolean @deprecated(reason: "Use `isVerified`.")
+	isOnline: Boolean!
+	isLocked: Boolean!
+	reason: String!
+	isActive: Boolean!
+	stripeId: String
+	type: UserType!
+	ccLast4: String
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	hello: String!
+		@rateLimit(window: "2s", max: 1, message: "You are doing that too often.")
+	me: User @isAuthenticated
+	users(offset: Int, limit: Int): [User!] @isAuthenticated
+	user(_id: ID!): User @isAuthenticated
+	search(conditions: SearchInput!): [Result]! @isAuthenticated
+	searchUser(userIds: [ID!]): UserResult!
+		@rateLimit(window: "3s", max: 1, message: "You are doing that too often.")
+	# today: Date @date @hasScope(scope: [“read:rating”])
+	today: Date @date
+}
+
+type Mutation {
+	createUser(
+		input: CreateUserInput! @validate(schema: "createUserRegister")
+	): User
+		@rateLimit(window: "5s", max: 1, message: "You are doing that too often.")
+	updateUser(
+		_id: ID!
+		input: UpdateUserInput! @validate(schema: "updateUserRegister")
+	): Boolean @isAuthenticated
+	updateAvatar(_id: ID!, file: Upload!): Boolean @isAuthenticated
+	deleteUser(_id: ID!): Boolean @isAuthenticated
+	deleteUsers: Boolean! @isAuthenticated
+	verifyEmail(emailToken: String!): Boolean
+	login(
+		input: LoginUserInput! @validate(schema: "loginUserRegister")
+	): LoginResponse
+	refreshToken(refreshToken: String!): RefreshTokenResponse
+	lockAndUnlockUser(_id: ID!, reason: String!): Boolean @isAuthenticated
+	changePassword(
+		_id: ID!
+		currentPassword: String!
+		password: String!
+	): Boolean @isAuthenticated
+	forgotPassword(email: String!): Boolean
+	resetPassword(resetPasswordToken: String!, password: String!): Boolean
+	createSubscription(source: String!, ccLast4: String!): User @isAuthenticated
+	changeCreditCard(source: String!, ccLast4: String!): User @isAuthenticated
+	# cancelSubscription: User @isAuthenticated
+	validateUser(
+		text: String!
+		input: CreateUserInput! @validate(schema: "createUserRegister")
+	): Boolean
+}
+
+type Subscription {
+	newUser: User @isAuthenticated
+}

@@ -1,0 +1,27 @@
+enum Type {
+	VERIFY_EMAIL
+	FORGOT_PASSWORD
+}
+
+input CreateEmailInput {
+	userId: String!
+	type: Type!
+}
+
+type Email {
+	_id: ID!
+	userId: ID!
+	type: Type!
+	isOpened: Boolean!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	emails: [Email] @isAuthenticated
+}
+
+type Mutation {
+	createEmail(input: CreateEmailInput!): Email
+	openEmail(_id: ID!): Boolean
+}

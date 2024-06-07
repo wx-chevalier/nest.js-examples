@@ -1,0 +1,18 @@
+scalar Upload
+
+type File {
+	_id: ID!
+	filename: String!
+	path: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	files: [File] @isAuthenticated
+}
+
+type Mutation {
+	uploadFile(file: Upload!): File
+	uploadFileLocal(file: Upload!): File
+}

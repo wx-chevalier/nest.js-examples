@@ -1,0 +1,39 @@
+# auth
+directive @isAuthenticated on FIELD | FIELD_DEFINITION
+directive @hasPermission(permission: String) on FIELD | FIELD_DEFINITION
+directive @hasPath(path: String) on FIELD | FIELD_DEFINITION
+# directive @hasScope(scope: [String]) on QUERY | FIELD
+# function
+directive @deprecated(
+	reason: String = "No longer supported"
+) on FIELD_DEFINITION | ENUM_VALUE
+# limit
+directive @rateLimit(
+	max: Int
+	window: String
+	message: String
+	identityArgs: [String]
+	arrayLengthField: String
+) on FIELD_DEFINITION
+# validate
+directive @length(max: Int) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+directive @validate(schema: String, prototype: String) on ARGUMENT_DEFINITION
+directive @call on FIELD_DEFINITION
+# format
+directive @date(defaultFormat: String = "mmmm d, yyyy") on FIELD_DEFINITION
+directive @upper on FIELD_DEFINITION
+directive @concat(value: String!) on FIELD_DEFINITION
+directive @intl on FIELD_DEFINITION
+# rest
+directive @rest(url: String) on FIELD_DEFINITION
+
+scalar JSON
+scalar JSONObject
+scalar Date
+scalar Upload
+
+schema {
+	query: Query
+	mutation: Mutation
+	subscription: Subscription
+}

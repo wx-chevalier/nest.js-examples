@@ -1,0 +1,19 @@
+type Notification {
+	_id: ID!
+	label: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	notifications: [Notification] @isAuthenticated
+}
+
+type Mutation {
+	pushNotification(userIds: [ID!]!, label: String!): Notification
+		@isAuthenticated
+}
+
+type Subscription {
+	newNotification: Notification @isAuthenticated
+}

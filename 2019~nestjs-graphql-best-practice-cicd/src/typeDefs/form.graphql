@@ -1,0 +1,22 @@
+input CreateFormInput {
+	content: String!
+}
+
+type Form {
+	_id: ID!
+	content: String
+	state: Int!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	forms: [Form] @isAuthenticated @hasPermission(permission: "FORM_READ")
+}
+
+type Mutation {
+	createForm(input: CreateFormInput!): Form
+		@hasPermission(permission: "FORM_CREATE")
+	acceptForm1st(_id: ID!): Form @hasPermission(permission: "FORM_ACCEPT_1ST")
+	acceptForm2nd(_id: ID!): Form @hasPermission(permission: "FORM_ACCEPT_2ND")
+}
