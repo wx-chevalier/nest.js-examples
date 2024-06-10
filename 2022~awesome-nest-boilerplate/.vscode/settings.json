@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "Injectable",
+        "microservices",
+        "nestjs",
+        "postgres"
+    ],
+    "editor.detectIndentation": false,
+    "rift.autostart": false,
+    "i18n-ally.localesPaths": [
+      "src/i18n"
+    ]
+}

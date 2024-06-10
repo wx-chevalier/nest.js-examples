@@ -1,0 +1,96 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+        name: Install pnpm
+      - run: pnpm install
+
+
+      
+  unit-tests:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    needs: [build]
+
+    steps:
+      - uses: actions/checkout@v4
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+        name: Run unit test
+      - run: pnpm install 
+      - run: pnpm test
+
+  e2e-test:
+
+    runs-on: ubuntu-latest
+  
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    needs: [unit-tests]
+  
+    steps:
+      - uses: actions/checkout@v4
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Start Docker-Compose
+        run: docker-compose up -d db-test
+      - name: Install pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: pnpm install
+      - run: cp .env.example-test-e2e .env
+      - name: Run tests e2e -- register
+        run: pnpm test:e2e -- register.e2e-spec.ts
+      - name: Run tests e2e -- login
+        run: pnpm test:e2e -- login.e2e-spec.ts
+      - name: Run tests e2e -- hello
+        run: pnpm test:e2e -- app.e2e-spec.ts
+      - name: Run tests e2e -- change-password
+        run: pnpm test:e2e -- change-password.e2e-spec.ts
+      - name: Run tests e2e -- users
+        run: pnpm test:e2e -- users.e2e-spec.ts
+      - name: Run tests e2e -- forgot-password
+        run: pnpm test:e2e -- forgot-password.e2e-spec.ts
+      - name: Stop Docker-Compose
+        run: docker-compose down
